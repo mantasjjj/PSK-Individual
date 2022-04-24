@@ -10,7 +10,7 @@
     <h2>Mechanics:</h2>
     <ol>
         <ui:repeat value="#{mechanics.allMechanics}" var="mechanic">
-            <li>#{mechanic.name}</li>
+            <li><h:link value="#{mechanic.name}" outcome="clients?mechanicId=#{mechanic.id}" /></li>
         </ui:repeat>
     </ol>
     <h:form>
