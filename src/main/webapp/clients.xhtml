@@ -11,7 +11,7 @@
     <ol>
         <ui:repeat value="#{clientsOfMechanic.mechanic.clients}" var="client">
             <li>
-                <h:link value="#{client.name} #{client.carMake}" outcome="clientDetails?clientId=#{client.id}" />
+                <h:link value="#{client.name} #{client.carMake} #{client.carLicencePlate}" outcome="clientDetails?clientId=#{client.id}" />
             </li>
         </ui:repeat>
     </ol>

@@ -6,12 +6,15 @@ import lt.vu.exceptions.InvalidLicencePlateFormatException;
 import lt.vu.exceptions.LicencePlateAlreadyExistsException;
 import lt.vu.exceptions.LicencePlateException;
 import lt.vu.persistence.CarDAO;
+import lt.vu.persistence.ClientDAO;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 
@@ -21,7 +24,7 @@ public class LicencePlateChecker implements Serializable {
     @Inject
     @Setter
     @Getter
-    private CarDAO carDAO;
+    private ClientDAO clientDAO;
 
     public void checkLicencePlate(String licencePlate) throws LicencePlateException {
         String regex = "[A-Z]{3}[0-9]{3}";
@@ -30,7 +33,7 @@ public class LicencePlateChecker implements Serializable {
         Matcher matcher = pattern.matcher(licencePlate);
 
         if (matcher.matches()) {
-            if (carDAO.findByLicencePlate(licencePlate) != null) {
+            if (clientDAO.loadAll() != null && clientDAO.loadAll().stream().anyMatch(c -> Objects.equals(c.getCarLicencePlate(), licencePlate))) {
                 throw new LicencePlateAlreadyExistsException(format("Licence plate %s already exists.", licencePlate));
             }
         } else {

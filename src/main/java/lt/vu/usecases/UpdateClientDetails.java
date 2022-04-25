@@ -4,8 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Car;
 import lt.vu.entities.Client;
+import lt.vu.exceptions.LicencePlateException;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.ClientDAO;
+import lt.vu.services.CarBrandGenerator;
+import lt.vu.services.LicencePlateChecker;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -25,9 +28,13 @@ public class UpdateClientDetails implements Serializable {
     private Client client;
 
     @Inject
+    LicencePlateChecker licencePlateChecker;
+
+    @Inject
     private ClientDAO clientDAO;
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private Car carOfClient = new Car();
 
     @PostConstruct
@@ -44,10 +51,24 @@ public class UpdateClientDetails implements Serializable {
 //        //TODO: fix
 //        carOfClient.setMake(this.client.getCarMake());
 //        this.client.setCar(carOfClient);
-        try{
+        try {
             clientDAO.update(this.client);
         } catch (OptimisticLockException e) {
             return "/clientDetails.xhtml?faces-redirect=true&client=" + this.client.getId() + "&error=optimistic-lock-exception";
+        }
+        return "clients.xhtml?mechanicId=" + this.client.getMechanic().getId() + "&faces-redirect=true";
+    }
+
+    @Transactional
+    @LoggedInvocation
+    public String updateClientLicencePlate() {
+        try {
+            licencePlateChecker.checkLicencePlate(this.client.getCarLicencePlate());
+            clientDAO.update(this.client);
+        } catch (OptimisticLockException e) {
+            return "/clientDetails.xhtml?faces-redirect=true&client=" + this.client.getId() + "&error=optimistic-lock-exception";
+        } catch (LicencePlateException e) {
+            throw new RuntimeException(e);
         }
         return "clients.xhtml?mechanicId=" + this.client.getMechanic().getId() + "&faces-redirect=true";
     }

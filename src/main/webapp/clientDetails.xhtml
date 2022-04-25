@@ -17,6 +17,17 @@
         <h:outputText value="Value was already modified by other user. If you want to override it - try again"
                       rendered="#{param['error'] == 'optimistic-lock-exception'}"/>
     </h:form>
+
+    <h:form>
+        <h:outputText value="Car Licence plate: "/>
+        <h:inputText a:placeholder="Enter the value" value="#{updateClientDetails.client.carLicencePlate}" required="true"/>
+        <h:commandButton value="Update" action="#{updateClientDetails.updateClientLicencePlate()}">
+            <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
+        </h:commandButton>
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again"
+                      rendered="#{param['error'] == 'optimistic-lock-exception'}"/>
+    </h:form>
+
     <h:form>
         <h:outputText value="#{generateCarBrand.carBrandGeneratorStatus}"/>
         <h:commandButton value="Generate car brand?" disabled="#{generateCarBrand.carBrandGeneratorRunning}"

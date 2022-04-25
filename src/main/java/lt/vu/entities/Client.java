@@ -28,6 +28,8 @@ public class Client {
 
     private String carMake;
 
+    private String carLicencePlate;
+
     @ManyToOne
     private Mechanic mechanic;
 
