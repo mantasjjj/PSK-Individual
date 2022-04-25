@@ -4,10 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Car;
 import lt.vu.entities.Client;
-import lt.vu.entities.Player;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.ClientDAO;
-import lt.vu.persistence.PlayersDAO;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;

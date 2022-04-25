@@ -2,7 +2,6 @@ package lt.vu.usecases;
 
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.services.CarBrandGenerator;
-import lt.vu.services.JerseyNumberGenerator;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;

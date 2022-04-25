@@ -4,13 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Client;
 import lt.vu.entities.Mechanic;
-import lt.vu.entities.Player;
-import lt.vu.entities.Team;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.ClientDAO;
 import lt.vu.persistence.MechanicDAO;
-import lt.vu.persistence.PlayersDAO;
-import lt.vu.persistence.TeamsDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;

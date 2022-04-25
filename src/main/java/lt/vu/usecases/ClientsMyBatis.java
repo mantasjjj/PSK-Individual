@@ -3,9 +3,7 @@ package lt.vu.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.mybatis.dao.ClientMapper;
-import lt.vu.mybatis.dao.TeamMapper;
 import lt.vu.mybatis.model.Client;
-import lt.vu.mybatis.model.Team;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;

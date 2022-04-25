@@ -4,8 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="lt.vu.mybatis.model.Team" alias="Team"/>
-        <typeAlias type="lt.vu.mybatis.model.Player" alias="Player"/>
         <typeAlias type="lt.vu.mybatis.model.Client" alias="Client"/>
         <typeAlias type="lt.vu.mybatis.model.Car" alias="Car"/>
         <typeAlias type="lt.vu.mybatis.model.Service" alias="Service"/>
@@ -20,8 +18,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis.xml/TeamMapper.xml"/>
-        <mapper resource="mybatis.xml/PlayerMapper.xml"/>
         <mapper resource="mybatis.xml/ClientMapper.xml"/>
         <mapper resource="mybatis.xml/CarMapper.xml"/>
         <mapper resource="mybatis.xml/ServiceMapper.xml"/>
