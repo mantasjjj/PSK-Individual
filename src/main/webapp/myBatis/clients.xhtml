@@ -16,7 +16,7 @@
     <h:form>
         <h:inputText a:placeholder="name" value="#{clientsOfMechanic.clientToCreate.name}" required="true" />
         <h:commandButton value="Add client to mechanic" action="#{clientsOfMechanic.createClient}" >
-            <f:param name="teamId" value="#{clientsOfMechanic.mechanic.id}" />
+            <f:param name="mechanicId" value="#{clientsOfMechanic.mechanic.id}" />
         </h:commandButton>
     </h:form>
     <h:link outcome="/myBatis/mechanics" value="Back to mechanics page"/>

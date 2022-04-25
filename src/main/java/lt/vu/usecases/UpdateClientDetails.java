@@ -43,9 +43,9 @@ public class UpdateClientDetails implements Serializable {
     @Transactional
     @LoggedInvocation
     public String updateClientCar() {
-        //TODO: fix
-        carOfClient.setMake(this.client.getCarMake());
-        this.client.setCar(carOfClient);
+//        //TODO: fix
+//        carOfClient.setMake(this.client.getCarMake());
+//        this.client.setCar(carOfClient);
         try{
             clientDAO.update(this.client);
         } catch (OptimisticLockException e) {
