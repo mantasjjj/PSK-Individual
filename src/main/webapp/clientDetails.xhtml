@@ -10,11 +10,19 @@
     <h2>#{updateClientDetails.client.name}</h2>
     <h:form>
         <h:outputText value="Car: "/>
-        <h:inputText a:placeholder="Enter the value" value="#{updateClientDetails.client.carMake}" required="true" />
+        <h:inputText a:placeholder="Enter the value" value="#{updateClientDetails.client.carMake}" required="true"/>
         <h:commandButton value="Update" action="#{updateClientDetails.updateClientCar()}">
-            <f:param name="clientId" value="#{updateClientDetails.client.id}" />
+            <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
         </h:commandButton>
-        <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again"
+                      rendered="#{param['error'] == 'optimistic-lock-exception'}"/>
+    </h:form>
+    <h:form>
+        <h:outputText value="#{generateCarBrand.carBrandGeneratorStatus}"/>
+        <h:commandButton value="Generate car brand?" disabled="#{generateCarBrand.carBrandGeneratorRunning}"
+                         action="#{generateCarBrand.generateNewCarBrand()}">
+            <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
+        </h:commandButton>
     </h:form>
     <h:link outcome="index" value="Back to home page"/>
 </h:body>
