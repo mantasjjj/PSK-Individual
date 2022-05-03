@@ -25,11 +25,14 @@ public class Mechanic {
     @Column(name = "NAME")
     private String name;
 
-    @JoinColumn(name="ROLE")
+    @JoinColumn(name = "ROLE")
     private String role;
 
     @OneToMany(mappedBy = "mechanic")
     private List<Client> clients = new ArrayList<>();
+
+    @ManyToMany
+    private List<Service> services = new ArrayList<>();
 
     public Mechanic() {
     }

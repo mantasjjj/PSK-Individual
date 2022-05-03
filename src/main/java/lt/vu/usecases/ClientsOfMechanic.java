@@ -9,6 +9,7 @@ import lt.vu.persistence.ClientDAO;
 import lt.vu.persistence.MechanicDAO;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;

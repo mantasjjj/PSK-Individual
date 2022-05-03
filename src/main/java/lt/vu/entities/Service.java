@@ -27,7 +27,7 @@ public class Service {
     @JoinColumn(name="ADDRESS")
     private String address;
 
-    @OneToMany
+    @ManyToMany(mappedBy = "services")
     private List<Mechanic> mechanics;
 
     public Service() {

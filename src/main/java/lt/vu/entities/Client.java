@@ -23,11 +23,14 @@ public class Client {
     @Column(name = "NAME")
     private String name;
 
+    @Getter
+    @Setter
     @OneToOne(mappedBy = "owner")
     private Car car;
 
     private String carMake;
 
+    @Column(name = "LICENCE_PLATE")
     private String carLicencePlate;
 
     @ManyToOne

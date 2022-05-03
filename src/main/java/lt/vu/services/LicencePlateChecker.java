@@ -27,7 +27,7 @@ public class LicencePlateChecker implements Serializable {
     private ClientDAO clientDAO;
 
     public void checkLicencePlate(String licencePlate) throws LicencePlateException {
-        String regex = "[A-Z]{3}[0-9]{3}";
+        String regex = "[A-Z]{3}\\d{3}";
         Pattern pattern = Pattern.compile(regex);
 
         Matcher matcher = pattern.matcher(licencePlate);
