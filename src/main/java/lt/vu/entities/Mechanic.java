@@ -31,7 +31,7 @@ public class Mechanic {
     @OneToMany(mappedBy = "mechanic")
     private List<Client> clients = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "mechanics")
     private List<Service> services = new ArrayList<>();
 
     public Mechanic() {

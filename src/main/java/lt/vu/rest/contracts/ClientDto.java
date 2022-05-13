@@ -10,4 +10,10 @@ public class ClientDto {
     private String Name;
 
     private lt.vu.entities.Car Car;
+
+    private int mechanicId;
+
+    private String carMake;
+
+    private String licencePlate;
 }

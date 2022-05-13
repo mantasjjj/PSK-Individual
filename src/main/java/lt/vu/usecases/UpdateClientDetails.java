@@ -58,14 +58,14 @@ public class UpdateClientDetails implements Serializable {
 
     @Transactional
     @LoggedInvocation
-    public String updateClientLicencePlate() throws LicencePlateException {
+    public String updateClientLicencePlate() {
         try {
             licencePlateChecker.checkLicencePlate(this.client.getCarLicencePlate());
             clientDAO.update(this.client);
         } catch (OptimisticLockException e) {
             return "/clientDetails.xhtml?faces-redirect=true&client=" + this.client.getId() + "&error=optimistic-lock-exception";
         } catch (LicencePlateException e) {
-            throw new RuntimeException(e);
+            return "/clientDetails.xhtml?faces-redirect=true&clientId=" + this.client.getId() + "&error=licence-plate-exception" ;
         }
         return "clients.xhtml?mechanicId=" + this.client.getMechanic().getId() + "&faces-redirect=true";
     }

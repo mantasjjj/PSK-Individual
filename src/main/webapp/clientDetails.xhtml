@@ -24,8 +24,8 @@
         <h:commandButton value="Update" action="#{updateClientDetails.updateClientLicencePlate()}">
             <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
         </h:commandButton>
-        <h:outputText value="Value was already modified by other user. If you want to override it - try again"
-                      rendered="#{param['error'] == 'optimistic-lock-exception'}"/>
+        <h:outputText value="Licence plate already in use. Try another one."
+                      rendered="#{param['error'] == 'licence-plate-exception'}"/>
     </h:form>
 
     <h:form>

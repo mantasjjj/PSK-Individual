@@ -7,7 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head/>
 <h:body>
-    <h2>Clients of #{clientsOfMechanic.mechanic.name}:</h2>
+    <h2>Mechanics of #{clientsOfMechanic.mechanic.name}:</h2>
     <ol>
         <ui:repeat value="#{clientsOfMechanic.mechanic.clients}" var="client">
             <li>
@@ -21,31 +21,6 @@
                          actionListener="#{clientsOfMechanic.createClient}"
                          action="#{'clients?faces-redirect=true&amp;mechanicId='.concat(clientsOfMechanic.mechanic.id)}">
                 <f:param name="mechanicId" value="#{clientsOfMechanic.mechanic.id}" />
-        </h:commandButton>
-    </h:form>
-
-    <h:form>
-        <h2>All mechanic services:</h2>
-        <ol>
-            <ui:repeat value="#{clientsOfMechanic.mechanic.services}" var="service">
-                <li>#{service.name}                </li>
-            </ui:repeat>
-        </ol>
-    </h:form>
-
-    <h:form>
-        <h2>All available services:</h2>
-        <h:selectOneMenu value="#{services.serviceIdToSet}">
-            <f:selectItems value="#{services.allServices}"/>
-        </h:selectOneMenu>
-        <h:commandButton value="Add service to the mechanic " action="#{services.addServiceToMechanic}">
-            <f:param name="mechanicId" value="#{clientsOfMechanic.mechanic.id}"/>
-        </h:commandButton>
-    </h:form>
-    <h:form>
-        <h:inputText a:placeholder="name" value="#{services.serviceToCreate.name}" required="true"/>
-        <h:commandButton value="Add new service " action="#{services.createService}">
-            <f:param name="mechanicId" value="#{clientsOfMechanic.mechanic.id}"/>
         </h:commandButton>
     </h:form>
     <h:link outcome="index" value="Back to mechanics page"/>

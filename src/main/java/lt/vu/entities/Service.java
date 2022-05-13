@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,10 +28,17 @@ public class Service {
     @JoinColumn(name="ADDRESS")
     private String address;
 
-    @ManyToMany(mappedBy = "services")
-    private List<Mechanic> mechanics;
+    @ManyToMany
+    @JoinColumn(name = "MECHANIC_ID")
+    private List<Mechanic> mechanics = new ArrayList<>();
 
     public Service() {
+    }
+
+    public void addMechanic(Mechanic mechanic) {
+        if (mechanic != null) {
+            this.mechanics.add(mechanic);
+        }
     }
 
     @Override
@@ -40,6 +48,11 @@ public class Service {
         Service service = (Service) o;
         return Objects.equals(id, service.id) &&
                 Objects.equals(address, service.address);
+    }
+
+    @Override
+    public String toString() {
+        return id != null ? id.toString() : null;
     }
 
     @Override
