@@ -1,7 +1,7 @@
 package lt.vu.usecases;
 
-import lt.vu.services.CarBrandGenerator;
 import lt.vu.interceptors.LoggedInvocation;
+import lt.vu.services.CarColorGenerator;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -14,32 +14,32 @@ import java.util.concurrent.ExecutionException;
 
 @SessionScoped
 @Named
-public class GenerateCarBrand implements Serializable {
+public class GenerateCarColor implements Serializable {
     @Inject
-    CarBrandGenerator carBrandGenerator;
+    CarColorGenerator carColorGenerator;
 
-    private CompletableFuture<String> carBrandGeneratorTask = null;
+    private CompletableFuture<String> carColorGeneratorTask = null;
 
     @LoggedInvocation
-    public String generateNewCarBrand() {
+    public String generateNewCarColor() {
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 
-        carBrandGeneratorTask = CompletableFuture.supplyAsync(() -> carBrandGenerator.generateCarBrand());
+        carColorGeneratorTask = CompletableFuture.supplyAsync(() -> carColorGenerator.generateColor());
 
         return "/clientDetails.xhtml?faces-redirect=true&clientId=" + requestParameters.get("clientId");
     }
 
-    public boolean isCarBrandGeneratorRunning() {
-        return carBrandGeneratorTask != null && !carBrandGeneratorTask.isDone();
+    public boolean isCarColorGeneratorRunning() {
+        return carColorGeneratorTask != null && !carColorGeneratorTask.isDone();
     }
 
-    public String getCarBrandGeneratorStatus() throws ExecutionException, InterruptedException {
-        if (carBrandGeneratorTask == null) {
+    public String getCarColorGeneratorStatus() throws ExecutionException, InterruptedException {
+        if (carColorGeneratorTask == null) {
             return null;
-        } else if (isCarBrandGeneratorRunning()) {
+        } else if (isCarColorGeneratorRunning()) {
             return "Car Brand generation in progress";
         }
-        return "Suggested car brand: " + carBrandGeneratorTask.get();
+        return "Suggested car brand: " + carColorGeneratorTask.get();
     }
 }

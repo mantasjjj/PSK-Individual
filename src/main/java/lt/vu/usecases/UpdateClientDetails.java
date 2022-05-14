@@ -7,8 +7,7 @@ import lt.vu.entities.Client;
 import lt.vu.exceptions.LicencePlateException;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.ClientDAO;
-import lt.vu.services.CarBrandGenerator;
-import lt.vu.services.LicencePlateChecker;
+import lt.vu.services.LicencePlateCheckerImpl;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -28,7 +27,7 @@ public class UpdateClientDetails implements Serializable {
     private Client client;
 
     @Inject
-    LicencePlateChecker licencePlateChecker;
+    LicencePlateCheckerImpl licencePlateCheckerImpl;
 
     @Inject
     private ClientDAO clientDAO;
@@ -60,7 +59,7 @@ public class UpdateClientDetails implements Serializable {
     @LoggedInvocation
     public String updateClientLicencePlate() {
         try {
-            licencePlateChecker.checkLicencePlate(this.client.getCarLicencePlate());
+            licencePlateCheckerImpl.checkLicencePlate(this.client.getCarLicencePlate());
             clientDAO.update(this.client);
         } catch (OptimisticLockException e) {
             return "/clientDetails.xhtml?faces-redirect=true&client=" + this.client.getId() + "&error=optimistic-lock-exception";

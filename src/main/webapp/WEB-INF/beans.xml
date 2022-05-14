@@ -9,4 +9,10 @@
     <interceptors>
         <class>lt.vu.interceptors.MethodLogger</class>
     </interceptors>
+    <alternatives>
+        <class>lt.vu.alternatives.DefaultCarBrandGenerator</class>
+    </alternatives>
+    <decorators>
+        <class>lt.vu.decorators.SpecificLicencePlateChecker</class>
+    </decorators>
 </beans>

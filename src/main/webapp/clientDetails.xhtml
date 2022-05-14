@@ -24,7 +24,7 @@
         <h:commandButton value="Update" action="#{updateClientDetails.updateClientLicencePlate()}">
             <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
         </h:commandButton>
-        <h:outputText value="Licence plate already in use. Try another one."
+        <h:outputText value="Licence plate exception has occured."
                       rendered="#{param['error'] == 'licence-plate-exception'}"/>
     </h:form>
 
@@ -32,6 +32,14 @@
         <h:outputText value="#{generateCarBrand.carBrandGeneratorStatus}"/>
         <h:commandButton value="Generate car brand?" disabled="#{generateCarBrand.carBrandGeneratorRunning}"
                          action="#{generateCarBrand.generateNewCarBrand()}">
+            <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
+        </h:commandButton>
+    </h:form>
+
+    <h:form>
+        <h:outputText value="#{generateCarColor.carColorGeneratorStatus}"/>
+        <h:commandButton value="Generate car color?" disabled="#{generateCarColor.carColorGeneratorRunning}"
+                         action="#{generateCarColor.generateNewCarColor()}">
             <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
         </h:commandButton>
     </h:form>
