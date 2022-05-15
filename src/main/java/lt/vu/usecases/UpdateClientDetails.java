@@ -50,7 +50,7 @@ public class UpdateClientDetails implements Serializable {
         try {
             clientDAO.update(this.client);
         } catch (OptimisticLockException e) {
-            return "/clientDetails.xhtml?faces-redirect=true&client=" + this.client.getId() + "&error=optimistic-lock-exception";
+            return "/clientDetails.xhtml?faces-redirect=true&clientId=" + this.client.getId() + "&error=optimistic-lock-exception";
         }
         return "clients.xhtml?mechanicId=" + this.client.getMechanic().getId() + "&faces-redirect=true";
     }
@@ -62,7 +62,7 @@ public class UpdateClientDetails implements Serializable {
             licencePlateCheckerImpl.checkLicencePlate(this.client.getCarLicencePlate());
             clientDAO.update(this.client);
         } catch (OptimisticLockException e) {
-            return "/clientDetails.xhtml?faces-redirect=true&client=" + this.client.getId() + "&error=optimistic-lock-exception";
+            return "/clientDetails.xhtml?faces-redirect=true&clientId=" + this.client.getId() + "&error=optimistic-lock-exception";
         } catch (LicencePlateException e) {
             return "/clientDetails.xhtml?faces-redirect=true&clientId=" + this.client.getId() + "&error=licence-plate-exception" ;
         }

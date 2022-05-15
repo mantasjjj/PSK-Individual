@@ -38,8 +38,8 @@ public class GenerateCarColor implements Serializable {
         if (carColorGeneratorTask == null) {
             return null;
         } else if (isCarColorGeneratorRunning()) {
-            return "Car Brand generation in progress";
+            return "Car color generation in progress";
         }
-        return "Suggested car brand: " + carColorGeneratorTask.get();
+        return "Suggested car color: " + carColorGeneratorTask.get();
     }
 }

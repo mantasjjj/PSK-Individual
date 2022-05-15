@@ -4,7 +4,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
-<h:head/>
+<h:head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"/>
+    <link href="css/style.css" rel="stylesheet" />
+</h:head>
 <h:body>
     <h2>Services:</h2>
     <ol>
@@ -14,7 +17,7 @@
     </ol>
     <h:form>
         <h:inputText value="#{services.serviceToCreate.name}" required="true" />
-        <h:commandButton value="Add new service" actionListener="#{services.createService}" action="index?faces-redirect=true"/>
+        <h:commandButton styleClass="btn btn-primary" value="Add new service" actionListener="#{services.createService}" action="index?faces-redirect=true"/>
     </h:form>
 </h:body>
 </html>

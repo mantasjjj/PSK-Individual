@@ -36,6 +36,10 @@ public class Client {
     @ManyToOne
     private Mechanic mechanic;
 
+    @Column(name = "OPT_LOCK_VERSION ")
+    @Version
+    private Integer version;
+
     public Client() {
     }
 

@@ -5,13 +5,16 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://java.sun.com/jsf/core"
 >
-<h:head/>
+<h:head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"/>
+    <link href="css/style.css" rel="stylesheet" />
+</h:head>
 <h:body>
     <h2>#{updateClientDetails.client.name}</h2>
     <h:form>
         <h:outputText value="Car: "/>
         <h:inputText a:placeholder="Enter the value" value="#{updateClientDetails.client.carMake}" required="true"/>
-        <h:commandButton value="Update" action="#{updateClientDetails.updateClientCar()}">
+        <h:commandButton styleClass="btn btn-primary" value="Update" action="#{updateClientDetails.updateClientCar()}">
             <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
         </h:commandButton>
         <h:outputText value="Value was already modified by other user. If you want to override it - try again"
@@ -21,7 +24,7 @@
     <h:form>
         <h:outputText value="Car Licence plate: "/>
         <h:inputText a:placeholder="Enter the value" value="#{updateClientDetails.client.carLicencePlate}" required="true"/>
-        <h:commandButton value="Update" action="#{updateClientDetails.updateClientLicencePlate()}">
+        <h:commandButton styleClass="btn btn-primary" value="Update" action="#{updateClientDetails.updateClientLicencePlate()}">
             <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
         </h:commandButton>
         <h:outputText value="Licence plate exception has occured."
@@ -30,7 +33,7 @@
 
     <h:form>
         <h:outputText value="#{generateCarBrand.carBrandGeneratorStatus}"/>
-        <h:commandButton value="Generate car brand?" disabled="#{generateCarBrand.carBrandGeneratorRunning}"
+        <h:commandButton styleClass="btn btn-primary" value="Generate car brand?" disabled="#{generateCarBrand.carBrandGeneratorRunning}"
                          action="#{generateCarBrand.generateNewCarBrand()}">
             <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
         </h:commandButton>
@@ -38,7 +41,7 @@
 
     <h:form>
         <h:outputText value="#{generateCarColor.carColorGeneratorStatus}"/>
-        <h:commandButton value="Generate car color?" disabled="#{generateCarColor.carColorGeneratorRunning}"
+        <h:commandButton styleClass="btn btn-primary" value="Generate car color?" disabled="#{generateCarColor.carColorGeneratorRunning}"
                          action="#{generateCarColor.generateNewCarColor()}">
             <f:param name="clientId" value="#{updateClientDetails.client.id}"/>
         </h:commandButton>

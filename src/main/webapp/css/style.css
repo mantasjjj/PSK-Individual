@@ -1,0 +1,15 @@
+h2 {
+    font-size: 1.2rem;
+}
+
+body {
+    padding-top: 1%;
+    padding-left: 37%;
+}
+
+btn, .btn-primary {
+    font-size: 0.9rem !important;
+    margin: 1.5% !important;
+    --bs-btn-padding-x: 1rem !important;
+    --bs-btn-padding-y: 0.2rem !important;
+}
