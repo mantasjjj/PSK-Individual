@@ -34,6 +34,7 @@ public class ClientsController {
     @Path("/")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response createClient(ClientDto clientData) {
         try {
             Client newClient = new Client();
@@ -53,8 +54,6 @@ public class ClientsController {
         } catch (OptimisticLockException ole) {
             return Response.status(Response.Status.CONFLICT).build();
         }
-
-
     }
 
     @Path("/{id}")
@@ -84,7 +83,6 @@ public class ClientsController {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
             existingClient.setName(clientData.getName());
-            existingClient.setCar(clientData.getCar());
             clientDAO.update(existingClient);
             return Response.ok().build();
         } catch (OptimisticLockException ole) {

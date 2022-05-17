@@ -37,6 +37,5 @@ public class LicencePlateCheckerImpl implements LicencePlateChecker, Serializabl
         } else {
             throw new InvalidLicencePlateFormatException("Licence plate is in invalid format.");
         }
-
     }
 }
